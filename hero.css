@@ -288,6 +288,11 @@
     /* Prevent double scrollbars mainly, content manages overflow */
   }
 
+  .img {
+    transform: translate(-50%, -50%) scale(1.1);
+    /* Reduced scale for mobile */
+  }
+
   .site-logo {
     top: 1em;
     left: 1em;
@@ -380,12 +385,8 @@
   }
 
   .nav {
-    top: 0.5em;
-    right: 0.5em;
-    flex-direction: column;
-    gap: 0.3em;
-    padding: 0.5em;
-    justify-content: center;
+    display: none !important;
+    /* Force hide on small mobile, rely on toggle */
   }
 
   .nav .nav-item p {
@@ -397,8 +398,12 @@
   }
 
   .team-img {
-    height: 250px;
-    margin: 1em 0;
+    height: 200px;
+    width: 80%;
+    margin: 0 auto;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .site-info {
@@ -476,8 +481,11 @@
     position: relative;
     top: auto;
     right: auto;
-    justify-content: flex-start;
     margin-bottom: 1em;
+  }
+
+  .img {
+    transform: translate(-50%, -50%) scale(1.2);
   }
 
   .team-img {
