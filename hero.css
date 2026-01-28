@@ -605,3 +605,136 @@
     display: none;
   }
 }
+
+/* =========================================
+   MOBILE HERO SECTION (New)
+   ========================================= */
+.mobile-hero {
+  display: none;
+  /* Hidden on desktop */
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* Fallback */
+  height: 100dvh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.mobile-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mobile-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: mobileHeroZoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes mobileHeroZoom {
+  0% {
+    transform: scale(1.0);
+  }
+
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+.mobile-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  /* Dark overlay */
+}
+
+.mobile-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 0.5s;
+}
+
+.mobile-title {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-title sup {
+  font-size: 1.5rem;
+  vertical-align: top;
+}
+
+.mobile-subtitle {
+  font-family: "Apercu Mono Pro", monospace;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.mobile-cta-btn {
+  margin-top: 1rem;
+  padding: 1rem 2.5rem;
+  background: #fff;
+  color: #000;
+  text-transform: uppercase;
+  font-family: "Apercu Mono Pro", monospace;
+  font-size: 0.8rem;
+  text-decoration: none;
+  border-radius: 100px;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+
+.mobile-cta-btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive toggle */
+@media (max-width: 768px) {
+
+  /* HIDE DESKTOP HERO CONTAINER */
+  .container {
+    display: none !important;
+  }
+
+  /* SHOW MOBILE HERO */
+  .mobile-hero {
+    display: flex;
+  }
+
+  /* Reset padding for content below hero since .container isn't taking space */
+  .intro-section {
+    margin-top: 0;
+  }
+}
