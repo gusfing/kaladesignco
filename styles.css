@@ -177,6 +177,13 @@ section {
   text-transform: uppercase;
 }
 
+@media (max-width: 768px) {
+  .marquee-item {
+    padding: 0 2rem;
+    font-size: 1rem;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -806,8 +813,8 @@ textarea {
   }
 
   body {
-    padding-bottom: 120px !important;
-    /* increased padding */
+    padding-bottom: 100px !important;
+    /* Adjusted padding to be less aggressive */
   }
 
   /* Hide Desktop Nav elements if needed (or keep them but minimal) */
@@ -854,8 +861,9 @@ textarea {
     height: auto;
     min-height: 100vh;
     display: block;
-    padding: 6rem 1rem;
-    overflow-y: auto;
+    padding: 3rem 1rem;
+    overflow-y: hidden;
+    /* Let body scroll handle it */
   }
 
   .testimonial-slider {
@@ -866,6 +874,8 @@ textarea {
     transform: none !important;
     /* Disable GSAP horizontal movement override if needed via JS check, but safely just stacking */
     padding-right: 0;
+    transform: none !important;
+    /* Ensure GSAP doesn't shift it off screen */
   }
 
   .testimonial {

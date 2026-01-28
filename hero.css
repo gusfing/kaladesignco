@@ -4,6 +4,8 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+  /* Fallback */
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -13,6 +15,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  /* Fallback */
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   z-index: 2;
@@ -278,7 +282,10 @@
 @media (max-width: 768px) {
   .container {
     height: 100vh;
-    overflow-y: auto;
+    /* Fallback */
+    height: 100dvh;
+    overflow-y: hidden;
+    /* Prevent double scrollbars mainly, content manages overflow */
   }
 
   .site-logo {
@@ -378,14 +385,15 @@
     flex-direction: column;
     gap: 0.3em;
     padding: 0.5em;
+    justify-content: center;
   }
 
   .nav .nav-item p {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .hero-content {
-    padding-top: 8em;
+    padding-top: 6em;
   }
 
   .team-img {
