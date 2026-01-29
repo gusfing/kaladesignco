@@ -153,6 +153,10 @@
   /* Optional: subtle parallax or zoom could go here */
 }
 
+.mobile-hero-detail {
+  display: none;
+}
+
 .hero-caption {
   position: absolute;
   bottom: 0;
@@ -192,6 +196,23 @@
     padding: 1rem;
     background: #f4f4f4;
     /* Solid styling for mobile header */
+  }
+
+  .mobile-hero-detail {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 1.5rem;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .mobile-hero-detail img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(1);
   }
 
   .hero-main {
