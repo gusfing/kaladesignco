@@ -154,8 +154,13 @@
 /* =========================================
    2. Work Section - Horizontal Scroll
    ========================================= */
+/* =========================================
+   2. Work Section - Cinematic Parallax
+   ========================================= */
 .work-section {
-    background-color: var(--bg-color);
+    background-color: #0d0d0d;
+    /* Cinematic Dark Mode backdrop */
+    color: #fff;
     overflow: hidden;
 }
 
@@ -164,22 +169,57 @@
     flex-wrap: nowrap;
     height: 100vh;
     width: 400%;
+    /* 4 items */
 }
 
 .work-item {
     width: 100vw;
     height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 0 clamp(4rem, 10vw, 8rem);
-    gap: 4rem;
+    padding: 0;
+    overflow: hidden;
 }
 
+/* Background Image Layer */
+.work-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.work-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    /* Dim for text contrast */
+    transform: scale(1.1);
+    /* Slight zoom for parallax */
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.work-item:hover .work-visual img {
+    opacity: 0.9;
+    transform: scale(1.05);
+    /* Zoom out on hover */
+}
+
+/* Foreground Text Layer */
 .work-info {
-    opacity: 0.3;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    mix-blend-mode: difference;
+    /* High-end contrast effect */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .work-item.active .work-info {
@@ -188,47 +228,62 @@
 }
 
 .work-num {
+    display: inline-block;
     font-family: var(--font-mono);
-    font-size: 0.875rem;
-    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
     margin-bottom: 2rem;
-    letter-spacing: 0.1em;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.8rem 1.5rem;
+    border-radius: 100px;
 }
 
 .work-title {
-    font-size: clamp(4rem, 8vw, 8rem);
-    line-height: 0.9;
-    margin-bottom: 1.5rem;
+    font-size: clamp(4rem, 15vw, 15rem);
+    /* Massive */
+    line-height: 0.85;
     letter-spacing: -0.04em;
-    font-weight: 400;
+    margin-bottom: 2rem;
+    white-space: nowrap;
 }
 
 .work-cat {
     font-family: var(--font-mono);
     text-transform: uppercase;
-    font-size: 0.9rem;
-    border: 1px solid var(--text-main);
-    padding: 0.5rem 1rem;
-    border-radius: 100px;
-    display: inline-block;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
 }
 
-.work-visual {
-    height: 85vh;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 4px;
-    /* Slight soften */
-}
+/* Mobile */
+@media (max-width: 768px) {
+    .work-container {
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+    }
 
-.work-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.2);
-    /* Zoom for parallax feel */
-    transition: transform 0.1s ease;
-    /* Handled by GSAP usually */
+    .work-item {
+        width: 100%;
+        height: 80vh;
+        /* Portrait ratio on mobile */
+    }
+
+    .work-info {
+        opacity: 1;
+        transform: none;
+        mix-blend-mode: normal;
+        /* Better legibility on phones */
+    }
+
+    .work-title {
+        font-size: 4rem;
+        white-space: normal;
+    }
+
+    .work-visual img {
+        opacity: 0.5;
+    }
 }
 
 /* =========================================
