@@ -8,71 +8,147 @@
 /* =========================================
    1. About Section - Split Sticky
    ========================================= */
+/* =========================================
+   1. About Section - Editorial Newspaper
+   ========================================= */
 .about-section {
-    padding: 0;
+    padding: 10rem 0 !important;
     background-color: var(--bg-color);
+    overflow: hidden;
+    position: relative;
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    /* More space for images */
-    min-height: 100vh;
-}
-
-.about-text-col {
-    position: sticky;
-    top: 0;
-    height: 100vh;
+.about-editorial-header {
+    padding: 0 clamp(2rem, 5vw, 4rem);
+    border-bottom: 2px solid var(--text-main);
+    margin-bottom: 4rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem clamp(2rem, 5vw, 6rem);
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 2rem;
 }
 
-.about-vision {
-    font-family: var(--font-main);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1.05;
+.about-big-title {
+    font-size: clamp(4rem, 12vw, 11rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-left: -0.05em;
+    /* Optical alignment */
+}
+
+.about-meta {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-align: right;
+    padding-bottom: 1rem;
+}
+
+.about-grid-editorial {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr;
+    /* Asymmetric grid */
+    gap: 4rem;
+    padding: 0 clamp(2rem, 5vw, 4rem);
+    align-items: start;
+}
+
+.about-col-text {
+    padding-top: 2rem;
+}
+
+.about-lead {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
     font-weight: 400;
     margin-bottom: 3rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
 }
 
-.about-detail {
-    font-size: 1.125rem;
-    line-height: 1.6;
-    max-width: 420px;
+.about-body {
+    font-size: 1rem;
     color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 90%;
 }
 
-.about-image-col {
-    padding: 8rem 4rem;
-    /* More breathing room */
+.about-col-img-tall {
+    position: relative;
+    margin-top: -10rem;
+    /* Overlap header impact */
+}
+
+.about-img-tall {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.8s ease;
+}
+
+.about-col-img-tall:hover .about-img-tall {
+    filter: grayscale(0%);
+}
+
+.about-col-stats {
+    font-family: var(--font-mono);
     display: flex;
     flex-direction: column;
-    gap: 8rem;
-    /* Huge gap between images */
+    gap: 4rem;
+    padding-top: 6rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 4rem;
 }
 
-.about-img-wrapper {
-    overflow: hidden;
-    width: 100%;
+.stat-item {
+    display: flex;
+    flex-direction: column;
 }
 
-.about-img {
-    width: 100%;
-    aspect-ratio: 4/5;
-    /* Portrait editorial feel */
-    object-fit: cover;
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    filter: grayscale(100%);
-    /* Start B&W */
+.stat-num {
+    font-size: 4rem;
+    font-family: var(--font-main);
+    line-height: 1;
 }
 
-.about-img:hover {
-    transform: scale(1.03);
-    filter: grayscale(0%);
+.stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 0.5rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .about-editorial-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .about-big-title {
+        font-size: 20vw;
+    }
+
+    .about-grid-editorial {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-col-img-tall {
+        margin-top: 0;
+        order: -1;
+    }
+
+    .about-col-stats {
+        border-left: none;
+        padding-left: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 0;
+    }
 }
 
 /* =========================================

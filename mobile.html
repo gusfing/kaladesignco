@@ -155,25 +155,44 @@
     <!-- Additional Sections -->
     <link rel="stylesheet" href="sections.css">
 
-    <!-- 1. ABOUT SECTION (Sticky Split) -->
+    <!-- 1. ABOUT SECTION (Editorial Newspaper) -->
     <section class="about-section" id="about">
         <div class="wrapper">
-            <div class="about-grid">
-                <div class="about-text-col">
-                    <h2 class="about-vision">We craft atmospheres that linger in the memory—where silence speaks and
-                        every detail tells a story.</h2>
-                    <p class="about-detail">Kala Design Co. is a multidisciplinary studio bridging the gap between
-                        architecture, interiors, and emotion. We don't just fill spaces; we curate feelings.</p>
+
+            <!-- Header Row -->
+            <div class="about-editorial-header">
+                <h2 class="about-big-title">The<br>Vision</h2>
+            </div>
+
+            <!-- Content Grid (Mobile Stack) -->
+            <div class="about-grid-editorial">
+                <!-- Col 2: Image First on Mobile -->
+                <div class="about-col-img-tall">
+                    <img src="./assets/projects/nakra-1.jpg" class="about-img-tall" loading="lazy" alt="Atmosphere">
                 </div>
-                <div class="about-image-col">
-                    <div class="about-img-wrapper"><img src="./assets/projects/nakra-1.jpg" class="about-img"
-                            loading="lazy" alt="Atmosphere 1"></div>
-                    <div class="about-img-wrapper"><img src="./assets/projects/shree-1.jpg" class="about-img"
-                            loading="lazy" alt="Atmosphere 2"></div>
-                    <div class="about-img-wrapper"><img src="./assets/projects/atcg-1.jpg" class="about-img"
-                            loading="lazy" alt="Atmosphere 3"></div>
+
+                <!-- Col 1: Text -->
+                <div class="about-col-text">
+                    <p class="about-lead">We craft atmospheres that linger in the memory.</p>
+                    <div class="about-body">
+                        <p>Kala Design Co. is a multidisciplinary studio bridging the gap between architecture,
+                            interiors, and emotion. We don't just fill spaces; we curate feelings.</p>
+                    </div>
+                </div>
+
+                <!-- Col 3: Stats -->
+                <div class="about-col-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">45+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">08</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 
