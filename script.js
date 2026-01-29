@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const workSection = document.querySelector(".work-section");
   if (workSection && !isMobile) {
     const container = document.querySelector(".work-container");
-    
+
     gsap.to(container, {
       x: () => -(container.scrollWidth - window.innerWidth),
       ease: "none",
@@ -228,16 +228,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const servicesSection = document.querySelector(".services-section");
   if (servicesSection && !isMobile) {
     const cards = document.querySelectorAll(".service-card-stack");
-    
+
     cards.forEach((card, index) => {
+      // 1. PINNING
       ScrollTrigger.create({
         trigger: card,
-        start: "top top+=150", 
+        start: "top top+=100",
         end: "bottom top",
-        pin: true, 
-        pinSpacing: false, 
+        pin: true,
+        pinSpacing: false,
         id: `card-${index}`
       });
+
+      // 2. SCALING PREVIOUS CARD (Depth Effect)
+      // As this card scrolls in, scale down the previous card
+      if (index > 0) {
+        const prevCard = cards[index - 1];
+
+        gsap.to(prevCard, {
+          scale: 0.95,
+          filter: "brightness(0.9)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "top top+=100",
+            scrub: true
+          }
+        });
+      }
     });
   }
 
@@ -272,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.create({
       trigger: ".testimonials-minimal",
       start: "top top",
-      end: () => `+=${wrapper.scrollWidth}`, 
+      end: () => `+=${wrapper.scrollWidth}`,
       pin: true,
       animation: tmTween,
       scrub: 1,

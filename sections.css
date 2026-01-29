@@ -2,7 +2,7 @@
 
 :root {
     --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    --section-padding: clamp(6rem, 15vw, 12rem) clamp(1rem, 4vw, 2rem);
+    --section-padding: clamp(8rem, 20vw, 15rem) clamp(2rem, 5vw, 4rem);
 }
 
 /* =========================================
@@ -15,7 +15,8 @@
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.9fr 1.1fr;
+    /* More space for images */
     min-height: 100vh;
 }
 
@@ -31,38 +32,47 @@
 
 .about-vision {
     font-family: var(--font-main);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    letter-spacing: -0.03em;
 }
 
 .about-detail {
-    font-size: 1.1rem;
-    max-width: 400px;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 420px;
     color: var(--text-secondary);
 }
 
 .about-image-col {
-    padding: 4rem 2rem;
+    padding: 8rem 4rem;
+    /* More breathing room */
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 8rem;
+    /* Huge gap between images */
 }
 
 .about-img-wrapper {
     overflow: hidden;
+    width: 100%;
 }
 
 .about-img {
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 4/5;
+    /* Portrait editorial feel */
     object-fit: cover;
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: grayscale(100%);
+    /* Start B&W */
 }
 
 .about-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+    filter: grayscale(0%);
 }
 
 /* =========================================
@@ -71,7 +81,6 @@
 .work-section {
     background-color: var(--bg-color);
     overflow: hidden;
-    /* Critical for pin */
 }
 
 .work-container {
@@ -79,131 +88,150 @@
     flex-wrap: nowrap;
     height: 100vh;
     width: 400%;
-    /* 4 sections */
 }
 
 .work-item {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 1fr 1.5fr;
     align-items: center;
-    padding: 0 4rem;
+    padding: 0 clamp(4rem, 10vw, 8rem);
+    gap: 4rem;
 }
 
 .work-info {
-    padding-right: 4rem;
-    opacity: 0.5;
-    transition: opacity 0.5s ease;
+    opacity: 0.3;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
 }
 
 .work-item.active .work-info {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .work-num {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 0.875rem;
     display: block;
     margin-bottom: 2rem;
+    letter-spacing: 0.1em;
 }
 
 .work-title {
-    font-size: clamp(3rem, 6vw, 6rem);
-    line-height: 1;
-    margin-bottom: 1rem;
+    font-size: clamp(4rem, 8vw, 8rem);
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+    font-weight: 400;
 }
 
 .work-cat {
     font-family: var(--font-mono);
     text-transform: uppercase;
+    font-size: 0.9rem;
+    border: 1px solid var(--text-main);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    display: inline-block;
 }
 
 .work-visual {
-    height: 80vh;
+    height: 85vh;
     width: 100%;
     overflow: hidden;
+    border-radius: 4px;
+    /* Slight soften */
 }
 
 .work-visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.2);
+    /* Zoom for parallax feel */
+    transition: transform 0.1s ease;
+    /* Handled by GSAP usually */
 }
 
 /* =========================================
    3. Services Section - Stacking Cards
    ========================================= */
 .services-section {
-    padding-bottom: 10rem;
+    padding-bottom: 15rem;
     background-color: var(--bg-color);
 }
 
 .service-stack-header {
     text-align: center;
-    margin-bottom: 8rem;
-    padding-top: 8rem;
+    margin-bottom: 10rem;
+    padding-top: 10rem;
 }
 
 .service-stack-header h2 {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(4rem, 10vw, 7rem);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
 }
 
 .service-stack-container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     position: relative;
+    padding: 0 2rem;
 }
 
 .service-card-stack {
     position: sticky;
-    top: 15vh;
-    /* Stack offset */
-    height: 70vh;
+    top: 10vh;
+    height: 80vh;
     background-color: #f4f4f4;
-    /* Needs solid bg to cover prev card */
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     overflow: hidden;
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.05);
-    margin-bottom: 4rem;
-    /* Spacer */
+    box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.08);
+    /* Deeper shadow */
+    margin-bottom: 10rem;
+    /* More spacing to feel the scroll */
+    border-radius: 20px 20px 0 0;
+    /* Modern curve */
 }
 
-/* Alternate backgrounds for contrast */
+/* Refined palette */
 .service-card-stack:nth-child(1) {
-    background-color: #e8e8e8;
+    background-color: #f0f0f0;
 }
 
 .service-card-stack:nth-child(2) {
-    background-color: #e0e0e0;
+    background-color: #e5e5e5;
 }
 
 .service-card-stack:nth-child(3) {
-    background-color: #d8d8d8;
-}
-
-.service-card-stack:nth-child(4) {
-    background-color: #d0d0d0;
+    background-color: #dbdbdb;
 }
 
 .stack-content {
-    padding: 4rem;
+    padding: 6rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .stack-title {
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(3rem, 5vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
 }
 
 .stack-list {
     list-style: none;
     font-family: var(--font-mono);
-    line-height: 2;
-    font-size: 1.1rem;
+    line-height: 2.2;
+    font-size: 1rem;
+    color: var(--text-main);
+    opacity: 0.8;
 }
 
 .stack-img {
@@ -215,99 +243,94 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    filter: grayscale(100%);
-    transition: filter 0.5s ease;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.8s ease;
 }
 
 .service-card-stack:hover .stack-img img {
-    filter: grayscale(0%);
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.05);
+    /* Zoom on hover */
 }
 
 /* =========================================
    4. Testimonials - Minimal Slider
    ========================================= */
 .testimonials-minimal {
-    padding: 10rem 0;
+    padding: 15rem 0;
     background-color: var(--bg-color);
     overflow: hidden;
 }
 
 .tm-wrapper {
     display: flex;
-    gap: 4rem;
-    padding-left: 10vw;
-    /* Offset start */
+    gap: 8rem;
+    padding-left: 15vw;
+    /* More offset */
 }
 
 .tm-card {
-    min-width: 60vw;
-    opacity: 0.3;
-    transition: opacity 0.5s ease;
+    min-width: 50vw;
+    opacity: 0.2;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(0.95);
 }
 
 .tm-card.active {
     opacity: 1;
+    transform: scale(1);
 }
 
 .tm-text {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.2;
-    margin-bottom: 2rem;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
     font-weight: 400;
+    letter-spacing: -0.03em;
+    text-indent: -0.5em;
+    /* Hanging quote style */
 }
 
 .tm-author {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
 }
 
 /* =========================================
    5. CTA - Dark Mode Transition
    ========================================= */
 .cta-dark-mode {
-    padding: 15rem 2rem;
+    padding: 20rem 2rem 10rem 2rem;
+    /* Massive top padding */
     text-align: center;
     background-color: var(--bg-color);
-    /* Initial bg, changes via JS */
     color: var(--text-main);
-    transition: background-color 0.8s ease, color 0.8s ease;
+    transition: background-color 1s cubic-bezier(0.16, 1, 0.3, 1), color 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cta-large-text {
-    font-size: clamp(4rem, 10vw, 12rem);
-    line-height: 0.9;
+    font-size: clamp(5rem, 12vw, 15rem);
+    line-height: 0.85;
     font-weight: 500;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     display: block;
+    letter-spacing: -0.05em;
+    transition: transform 0.6s ease;
 }
 
-/* Inverted State Class (Applied by JS) */
-body.dark-mode-active {
-    background-color: #050505 !important;
-    color: #ffffff !important;
+.cta-large-text:hover {
+    transform: scale(1.02);
 }
 
-body.dark-mode-active .cta-dark-mode {
-    background-color: #050505;
-    color: #ffffff;
-}
-
-body.dark-mode-active .btn-primary {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-}
-
-body.dark-mode-active .btn-primary:hover {
-    background-color: transparent;
-    color: #ffffff;
-}
-
-/* =========================================
-   Mobile Adjustments
-   ========================================= */
+/* Mobile Adjustments Refined */
 @media (max-width: 768px) {
+    :root {
+        --section-padding: 8rem 1.5rem;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -335,8 +358,10 @@ body.dark-mode-active .btn-primary:hover {
         width: 100%;
         height: auto;
         grid-template-columns: 1fr;
-        padding: 4rem 1.5rem;
+        padding: 6rem 1.5rem;
         gap: 2rem;
+        text-align: left;
+        min-height: 80vh;
     }
 
     .work-visual {
@@ -345,6 +370,8 @@ body.dark-mode-active .btn-primary:hover {
 
     .work-info {
         opacity: 1;
+        /* Always visible on mobile */
+        transform: none;
         padding-right: 0;
     }
 
@@ -356,7 +383,11 @@ body.dark-mode-active .btn-primary:hover {
     .service-card-stack {
         grid-template-columns: 1fr;
         height: auto;
-        min-height: 60vh;
+        min-height: 50vh;
+        border-radius: 0;
+        margin-bottom: 0;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .stack-img {
@@ -365,7 +396,7 @@ body.dark-mode-active .btn-primary:hover {
     }
 
     .stack-content {
-        padding: 2rem;
+        padding: 2.5rem 1.5rem;
     }
 
     /* Testimonial Mobile */
@@ -375,5 +406,6 @@ body.dark-mode-active .btn-primary:hover {
 
     .tm-text {
         font-size: 1.8rem;
+        text-indent: 0;
     }
 }
