@@ -155,12 +155,12 @@
    2. Work Section - Horizontal Scroll
    ========================================= */
 /* =========================================
-   2. Work Section - Cinematic Parallax
+   2. Work Section - Minimalist Gallery
    ========================================= */
 .work-section {
-    background-color: #0d0d0d;
-    /* Cinematic Dark Mode backdrop */
-    color: #fff;
+    background-color: var(--bg-color);
+    /* Back to site standard */
+    color: var(--text-main);
     overflow: hidden;
 }
 
@@ -169,90 +169,126 @@
     flex-wrap: nowrap;
     height: 100vh;
     width: 400%;
-    /* 4 items */
 }
 
 .work-item {
     width: 100vw;
     height: 100vh;
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr auto;
     justify-content: center;
     align-items: center;
-    padding: 0;
-    overflow: hidden;
+    padding: 4rem;
+    box-sizing: border-box;
 }
 
-/* Background Image Layer */
+/* Visual Layer */
 .work-visual {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 1;
+    max-width: 1200px;
+    /* Constrain width for elegance */
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 .work-visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
-    /* Dim for text contrast */
-    transform: scale(1.1);
-    /* Slight zoom for parallax */
-    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: grayscale(100%);
+    /* Editorial consistency */
 }
 
 .work-item:hover .work-visual img {
-    opacity: 0.9;
-    transform: scale(1.05);
-    /* Zoom out on hover */
+    transform: scale(1.03);
+    filter: grayscale(0%);
 }
 
-/* Foreground Text Layer */
+/* Info Layer - Below image, clean and minimal */
 .work-info {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    mix-blend-mode: difference;
-    /* High-end contrast effect */
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Top align text */
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    /* Subtle divider */
+    padding-top: 1.5rem;
+    opacity: 1;
+    /* Always visible */
+    transform: none;
+    mix-blend-mode: normal;
 }
 
 .work-item.active .work-info {
     opacity: 1;
-    transform: translateY(0);
+    /* Keep visible */
+    transform: none;
 }
 
-.work-num {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.8rem 1.5rem;
-    border-radius: 100px;
+.work-media-group {
+    display: flex;
+    gap: 4rem;
 }
 
 .work-title {
-    font-size: clamp(4rem, 15vw, 15rem);
-    /* Massive */
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    margin-bottom: 2rem;
-    white-space: nowrap;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
+}
+
+.work-num {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-secondary);
 }
 
 .work-cat {
     font-family: var(--font-mono);
+    font-size: 0.9rem;
     text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    opacity: 0.8;
+    color: var(--text-main);
+    border: 1px solid var(--text-main);
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .work-container {
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+    }
+
+    .work-item {
+        width: 100%;
+        height: auto;
+        padding: 6rem 1.5rem;
+        grid-template-rows: auto auto;
+        gap: 2rem;
+    }
+
+    .work-visual {
+        height: 50vh;
+    }
+
+    .work-info {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
 }
 
 /* Mobile */
