@@ -123,6 +123,39 @@
       color: #222;
     }
 
+    .project-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+      pointer-events: auto;
+    }
+
+    .project-button:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    .project-button svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-button:hover svg {
+      transform: translateX(3px);
+    }
+
     .scroll-hint {
       position: fixed;
       bottom: 40px;
@@ -135,26 +168,231 @@
     }
 
     /* Mobile Nav Toggle Override */
+    .mobile-nav-toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 101;
+    }
+
     .mobile-nav-toggle span {
+      width: 25px;
+      height: 2px;
       background: #000;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(247, 247, 245, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      text-align: center;
+    }
+
+    .mobile-nav-list li {
+      margin: 2rem 0;
+    }
+
+    .mobile-nav-list a {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #111;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-list a:hover {
+      opacity: 0.6;
     }
 
     @media (max-width: 900px) {
+      .site-nav .nav-list {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: flex;
+      }
+
       .slide-content {
         top: auto;
-        bottom: 12%;
+        bottom: 8%;
         left: 5%;
         width: 90%;
         max-width: none;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
 
       h1.slide-title {
         font-size: 2.5rem;
+        color: #000;
+      }
+
+      .description {
+        color: #444;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .catalogue-number {
+        color: #666;
+      }
+
+      .meta-grid {
+        border-top-color: #ddd;
+      }
+
+      .meta-label {
+        color: #666;
+      }
+
+      .meta-value {
+        color: #000;
+      }
+
+      .project-button {
+        margin-top: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.8rem;
       }
 
       .scroll-hint {
         bottom: 20px;
         left: 20px;
+        color: #666;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .site-nav .logo h1 {
+        font-size: 1.2rem;
+      }
+
+      .slide-content {
+        bottom: 5%;
+        left: 3%;
+        width: 94%;
+        padding: 1.5rem;
+      }
+
+      h1.slide-title {
+        font-size: 2rem;
+        line-height: 1.1;
+      }
+
+      .description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .meta-grid {
+        grid-template-columns: 60px 1fr;
+        row-gap: 0.6rem;
+        padding-top: 1rem;
+      }
+
+      .meta-label {
+        font-size: 0.6rem;
+      }
+
+      .meta-value {
+        font-size: 1rem;
+      }
+
+      .project-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .scroll-hint {
+        font-size: 0.6rem;
+        bottom: 15px;
+        left: 15px;
+      }
+
+      .mobile-nav-list a {
+        font-size: 2rem;
+      }
+    }
+
+    /* Landscape orientation adjustments */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .slide-content {
+        bottom: 3%;
+        padding: 1rem;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+
+      h1.slide-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      .meta-grid {
+        padding-top: 0.5rem;
+      }
+
+      .project-button {
+        margin-top: 0.5rem;
+        padding: 0.6rem 1rem;
+      }
+
+      .scroll-hint {
+        bottom: 10px;
+        left: 10px;
+        font-size: 0.55rem;
       }
     }
   </style>
@@ -175,7 +413,25 @@
       <li><a href="work.html">Work</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-nav-toggle" id="mobileNavToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <ul class="mobile-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
   <div id="canvas-container"></div>
 
@@ -194,6 +450,12 @@
         <span class="meta-label">Year</span> <span class="meta-value">2024</span>
         <span class="meta-label">Role</span> <span class="meta-value">Interior Design</span>
       </div>
+      <a href="work-detail.html" class="project-button">
+        View Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
     <!-- Slide 1 -->
@@ -209,6 +471,12 @@
         <span class="meta-label">Year</span> <span class="meta-value">2024</span>
         <span class="meta-label">Role</span> <span class="meta-value">Full Design</span>
       </div>
+      <a href="work-detail.html" class="project-button">
+        View Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
     <!-- Slide 2 -->
@@ -224,6 +492,12 @@
         <span class="meta-label">Year</span> <span class="meta-value">2025</span>
         <span class="meta-label">Role</span> <span class="meta-value">Commercial Design</span>
       </div>
+      <a href="work-detail.html" class="project-button">
+        View Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
     <!-- Slide 3 -->
@@ -239,6 +513,12 @@
         <span class="meta-label">Year</span> <span class="meta-value">2025</span>
         <span class="meta-label">Role</span> <span class="meta-value">Commercial Design</span>
       </div>
+      <a href="work-detail.html" class="project-button">
+        View Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
   </div>
@@ -273,7 +553,11 @@
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    
+    // Optimize for mobile devices
+    const isMobile = window.innerWidth <= 900;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+    
     document.getElementById('canvas-container').appendChild(renderer.domElement);
 
     const ambient = new THREE.AmbientLight(0xffffff, 0.6);
@@ -342,20 +626,40 @@
     });
 
     let touchStart = 0;
+    let touchStartY = 0;
+    let isVerticalScroll = false;
+
     window.addEventListener('touchstart', e => {
       touchStart = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isVerticalScroll = false;
       if (snapTimer) clearTimeout(snapTimer);
     });
 
     window.addEventListener('touchmove', e => {
-      const diff = touchStart - e.touches[0].clientX;
-      targetScroll += diff * 0.6;
-      touchStart = e.touches[0].clientX;
+      const diffX = touchStart - e.touches[0].clientX;
+      const diffY = touchStartY - e.touches[0].clientY;
+      
+      // Detect if this is more of a vertical scroll
+      if (Math.abs(diffY) > Math.abs(diffX) * 1.5) {
+        isVerticalScroll = true;
+        return;
+      }
+      
+      // Prevent default only for horizontal scrolling
+      if (!isVerticalScroll) {
+        e.preventDefault();
+        targetScroll += diffX * 0.8;
+        touchStart = e.touches[0].clientX;
+      }
+      
       if (snapTimer) clearTimeout(snapTimer);
-    });
+    }, { passive: false });
 
     window.addEventListener('touchend', () => {
-      snapToNearest();
+      if (!isVerticalScroll) {
+        snapToNearest();
+      }
     });
 
     window.addEventListener('mousemove', (e) => {
@@ -398,11 +702,54 @@
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      
+      // Update pixel ratio for mobile optimization
+      const isMobile = window.innerWidth <= 900;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
     });
 
     animate();
 
+    // Mobile Navigation
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+    if (mobileNavToggle && mobileNavOverlay) {
+      mobileNavToggle.addEventListener('click', () => {
+        mobileNavToggle.classList.toggle('active');
+        mobileNavOverlay.classList.toggle('active');
+      });
+
+      // Close mobile nav when clicking on overlay
+      mobileNavOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileNavOverlay) {
+          mobileNavToggle.classList.remove('active');
+          mobileNavOverlay.classList.remove('active');
+        }
+      });
+
+      // Close mobile nav when clicking on links
+      const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNavToggle.classList.remove('active');
+          mobileNavOverlay.classList.remove('active');
+        });
+      });
+    }
+
   </script>
+  
+  <!-- Database Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="database/supabase-config.js"></script>
+  <script src="database/database-service.js"></script>
+  
+  <!-- Admin Panel Integration Scripts -->
+  <script src="contact-form-handler.js"></script>
+  <script src="analytics-integration.js"></script>
+  <script src="seo-manager.js"></script>
+  <script src="frontend-sync.js"></script>
 </body>
 
 </html>

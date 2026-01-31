@@ -740,88 +740,20 @@ textarea {
   font-size: 1.25rem;
 }
 
-/* Mobile Bottom Navbar (Awwwards Style) */
-.bottom-nav {
-  display: none;
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  min-width: 300px;
-  background: rgba(20, 20, 20, 0.6);
-  /* Dark Glass */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 100px;
-  /* Capsule shape */
-  justify-content: space-evenly;
-  padding: 0.8rem 2rem;
-  z-index: 10000;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  gap: 1.5rem;
-}
-
-.bottom-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  transition: all 0.3s ease;
+/* Footer (New Universal Footer) */
+.site-footer {
+  background: var(--text-main);
+  color: var(--white);
+  padding: 4rem 2rem;
   position: relative;
-}
-
-.bottom-nav-item.active {
-  color: #fff;
-  font-weight: 500;
-}
-
-.bottom-nav-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  border-radius: 50%;
-}
-
-.bottom-nav-item svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.5;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.bottom-nav-item:hover svg {
-  transform: translateY(-3px);
-  stroke: #fff;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
-
-  /* Show Bottom Nav and pad body */
-  .bottom-nav {
-    display: flex;
-  }
-
-  body {
-    padding-bottom: 100px !important;
-    /* Adjusted padding to be less aggressive */
-  }
-
-  /* Hide Desktop Nav elements if needed (or keep them but minimal) */
-  .nav-item,
-  .mobile-nav-toggle {
+  /* Hide Desktop Nav elements on mobile but keep mobile nav toggle visible */
+  .nav-item {
     display: none !important;
-    /* Hide hero nav items on mobile since we have bottom nav */
+    /* Hide hero nav items on mobile */
   }
 
   .site-nav {

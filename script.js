@@ -1,3 +1,24 @@
+/**
+ * ╔═══════════════════════════════════════════════════════════╗
+ * ║                                                           ║
+ * ║   KALA DESIGN CO.                                         ║
+ * ║   Built with ♥ by Kawaki Studios                          ║
+ * ║   https://kawakistudios.com                               ║
+ * ║                                                           ║
+ * ╚═══════════════════════════════════════════════════════════╝
+ */
+
+// Console Branding
+console.log(
+  '%c KAWAKI STUDIOS ',
+  'background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; font-size: 24px; font-weight: bold; padding: 15px 30px; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;'
+);
+console.log(
+  '%c Built with ♥ by Kawaki Studios | kawakistudios.com ',
+  'color: #666; font-size: 12px; font-family: monospace;'
+);
+console.log('%c─────────────────────────────────────────', 'color: #ddd;');
+
 document.addEventListener("DOMContentLoaded", () => {
   // Check if we're on a mobile device
   const isMobile = window.innerWidth <= 768;
@@ -230,15 +251,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".service-card-stack");
 
     cards.forEach((card, index) => {
-      // 1. PINNING
-      ScrollTrigger.create({
-        trigger: card,
-        start: "top top+=100",
-        end: "bottom top",
-        pin: true,
-        pinSpacing: false,
-        id: `card-${index}`
-      });
+      // 1. PINNING REMOVED - Relying on CSS position: sticky
+      // ScrollTrigger.create({
+      //   trigger: card,
+      //   start: "top top+=100",
+      //   end: "bottom top",
+      //   pin: true,
+      //   pinSpacing: false,
+      //   id: `card-${index}`
+      // });
 
       // 2. SCALING PREVIOUS CARD (Depth Effect)
       // As this card scrolls in, scale down the previous card
@@ -311,53 +332,219 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Mobile Navigation Functionality
+// Enhanced Mobile Navigation Functionality
 function initMobileNav() {
   const mobileToggle = document.querySelector('.mobile-nav-toggle');
   const mobileOverlay = document.querySelector('.mobile-nav-overlay');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay .nav-item a');
+  const mobileHeader = document.querySelector('.mobile-header');
 
   if (mobileToggle && mobileOverlay) {
-    mobileToggle.addEventListener('click', () => {
+    // Enhanced toggle functionality
+    mobileToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
       mobileToggle.classList.toggle('active');
       mobileOverlay.classList.toggle('active');
 
       // Prevent body scroll when menu is open
       if (mobileOverlay.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
+        // Add subtle vibration on mobile devices
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
       } else {
         document.body.style.overflow = '';
       }
     });
 
     // Close mobile menu when clicking on a link
-    mobileNavLinks.forEach(link => {
+    mobileNavLinks.forEach((link, index) => {
       link.addEventListener('click', () => {
-        mobileToggle.classList.remove('active');
-        mobileOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+        closeMobileMenu();
       });
     });
 
     // Close mobile menu when clicking outside
     mobileOverlay.addEventListener('click', (e) => {
       if (e.target === mobileOverlay) {
-        mobileToggle.classList.remove('active');
-        mobileOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+        closeMobileMenu();
       }
     });
 
     // Close mobile menu on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
-        mobileToggle.classList.remove('active');
-        mobileOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+        closeMobileMenu();
       }
     });
+
+    // Enhanced close function
+    function closeMobileMenu() {
+      mobileToggle.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Header scroll effect
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (mobileHeader) {
+        if (currentScrollY > 50) {
+          mobileHeader.classList.add('scrolled');
+        } else {
+          mobileHeader.classList.remove('scrolled');
+        }
+        
+        // Hide/show header on scroll
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          mobileHeader.style.transform = 'translateY(-100%)';
+        } else {
+          mobileHeader.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
+      }
+    });
+
+    // Touch gesture support for closing menu
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    mobileOverlay.addEventListener('touchstart', (e) => {
+      touchStartY = e.changedTouches[0].screenY;
+    });
+
+    mobileOverlay.addEventListener('touchend', (e) => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 100;
+      const swipeDistance = touchStartY - touchEndY;
+      
+      // Swipe up to close menu
+      if (swipeDistance > swipeThreshold) {
+        closeMobileMenu();
+      }
+    }
   }
 }
 
 // Initialize mobile navigation
 initMobileNav();
+
+
+
+// ===========================================
+// Horizontal Scroll Gallery Controls
+// ===========================================
+function initWorksScroll() {
+  const scrollWrapper = document.getElementById('worksScroll');
+  const prevBtn = document.querySelector('.scroll-prev');
+  const nextBtn = document.querySelector('.scroll-next');
+  const progressBar = document.querySelector('.scroll-progress');
+
+  if (!scrollWrapper) return;
+
+  const scrollAmount = 420; // Approximate card width + gap
+
+  // Scroll buttons
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      scrollWrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      scrollWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+
+  // Update progress bar
+  function updateProgress() {
+    if (!progressBar) return;
+    const scrollLeft = scrollWrapper.scrollLeft;
+    const maxScroll = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+    const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  scrollWrapper.addEventListener('scroll', updateProgress);
+  updateProgress(); // Initial call
+
+  // Drag to scroll
+  let isDown = false;
+  let startX;
+  let scrollStart;
+
+  scrollWrapper.addEventListener('mousedown', (e) => {
+    isDown = true;
+    scrollWrapper.style.cursor = 'grabbing';
+    startX = e.pageX - scrollWrapper.offsetLeft;
+    scrollStart = scrollWrapper.scrollLeft;
+  });
+
+  scrollWrapper.addEventListener('mouseleave', () => {
+    isDown = false;
+    scrollWrapper.style.cursor = 'grab';
+  });
+
+  scrollWrapper.addEventListener('mouseup', () => {
+    isDown = false;
+    scrollWrapper.style.cursor = 'grab';
+  });
+
+  scrollWrapper.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scrollWrapper.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollWrapper.scrollLeft = scrollStart - walk;
+  });
+}
+
+// Initialize works scroll
+initWorksScroll();
+
+// ===========================================
+// Testimonials Animation (Simplified)
+// ===========================================
+function initTestimonialsAnimation() {
+  const testimonialSection = document.querySelector('.testimonials-section');
+  
+  if (testimonialSection) {
+    // Create intersection observer for better performance
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add animate class to trigger all animations
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(testimonialSection);
+  }
+
+  // Fallback for browsers without Intersection Observer
+  if (!window.IntersectionObserver && testimonialSection) {
+    setTimeout(() => {
+      testimonialSection.classList.add('animate');
+    }, 500);
+  }
+}
+
+// Initialize testimonials animation
+initTestimonialsAnimation();

@@ -62,28 +62,54 @@
       gap: 1.5rem;
       border-bottom: 1px solid var(--ink);
       padding-bottom: 0.5rem;
+      z-index: 100;
+
     }
 
     .top-folks a {
       text-decoration: none;
       color: var(--ink);
       position: relative;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
     }
 
     .top-folks a::after {
       content: '';
       position: absolute;
       bottom: -2px;
-      left: 0;
+      left: 50%;
       width: 0;
-      height: 1px;
+      height: 2px;
       background: var(--ink);
-      transition: width 0.3s;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .top-folks a:hover {
+      background: rgba(26, 26, 26, 0.05);
     }
 
     .top-folks a:hover::after {
-      width: 100%;
+      width: 80%;
+    }
+
+    /* Current page highlighting */
+    .top-folks a.current-page {
+      background: var(--ink);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .top-folks a.current-page::after {
+      display: none;
+    }
+
+    .top-folks a.current-page:hover {
+      background: var(--ink);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(26, 26, 26, 0.2);
     }
 
     .masthead-meta {
@@ -342,6 +368,21 @@
         position: static;
         justify-content: center;
         margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .top-folks a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .masthead h1 {
+        font-size: clamp(3rem, 12vw, 6rem);
+      }
+
+      .main-headline {
+        font-size: clamp(1.8rem, 5vw, 3rem);
       }
     }
   </style>
@@ -358,7 +399,8 @@
     <!-- Masthead -->
     <header class="masthead">
       <div class="top-folks">
-        <a href="index.html">Index</a>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="current-page">About</a>
         <a href="services.html">Services</a>
         <a href="work.html">Work</a>
         <a href="journal.html">Journal</a>
@@ -366,9 +408,7 @@
       </div>
 
       <div class="masthead-meta">
-        <span>London, United Kingdom</span>
-        <span>The Daily Kala — Vol. CXLII</span>
-        <span>Est. 2018</span>
+        <span>RAJISTHAN, INDIA</span>
       </div>
 
       <h1>The Kala Studio</h1>
@@ -593,6 +633,17 @@
         }, "-=1");
     });
   </script>
+  
+  <!-- Database Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="database/supabase-config.js"></script>
+  <script src="database/database-service.js"></script>
+  
+  <!-- Admin Panel Integration Scripts -->
+  <script src="contact-form-handler.js"></script>
+  <script src="analytics-integration.js"></script>
+  <script src="seo-manager.js"></script>
+  <script src="frontend-sync.js"></script>
 </body>
 
 </html>

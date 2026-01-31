@@ -363,7 +363,7 @@
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
-  
+
   .process-steps {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
@@ -373,11 +373,11 @@
   .services-mobile-nav-toggle {
     display: block;
   }
-  
+
   .services-header .nav {
     display: none;
   }
-  
+
   .services-header {
     flex-direction: column;
     align-items: flex-start;
@@ -406,24 +406,24 @@
   .services-header {
     padding: 1em;
   }
-  
+
   .services-hero {
     padding: 6em 1em 2em 1em;
   }
-  
+
   .services-grid {
     padding: 1.5em 1em;
     gap: 1.5em;
   }
-  
+
   .service-card {
     padding: 1.5em;
   }
-  
+
   .process-section {
     padding: 2em 1em;
   }
-  
+
   .services-footer {
     padding: 2em 1em;
   }
@@ -433,12 +433,183 @@
   .services-hero .hero-text h2 {
     font-size: 2rem;
   }
-  
+
   .service-content h3 {
     font-size: 1.3rem;
   }
-  
+
   .process-header h2 {
     font-size: 1.8rem;
   }
+}
+
+/* =========================================
+   Mobile Header & Navigation (Ported from mobile.css)
+   ========================================= */
+
+/* 1. Mobile Header Container */
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+
+  /* Hide desktop site-nav */
+  .site-nav {
+    display: none !important;
+  }
+}
+
+.mobile-header .site-logo {
+  display: block;
+}
+
+.mobile-header .site-logo h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* 2. Mobile Nav Toggle */
+.mobile-nav-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  z-index: 1001;
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* 3. Mobile Nav Overlay */
+.mobile-nav-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(17, 17, 17, 0.98) !important;
+  /* Dark background */
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transform: scale(1.05) !important;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+  pointer-events: all !important;
+}
+
+.mobile-nav-overlay .nav-item {
+  display: block !important;
+  transform: translateY(40px) rotateX(-10deg) !important;
+  opacity: 0 !important;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative !important;
+  visibility: visible !important;
+  z-index: 10000 !important;
+}
+
+.mobile-nav-overlay.active .nav-item {
+  transform: translateY(0) rotateX(0deg) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.mobile-nav-overlay.active .nav-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.mobile-nav-overlay.active .nav-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.mobile-nav-overlay.active .nav-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.mobile-nav-overlay.active .nav-item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.mobile-nav-overlay.active .nav-item:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.mobile-nav-overlay .nav-item p {
+  font-size: 2.5rem !important;
+  font-weight: 300 !important;
+  transform: none !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.mobile-nav-overlay .nav-item a {
+  color: #ffffff !important;
+  /* White text */
+  text-decoration: none !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative !important;
+  display: inline-block !important;
+  padding: 0.75rem 2rem !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 10001 !important;
 }

@@ -107,6 +107,21 @@
   text-decoration: none;
 }
 
+/* Logo Image Styles */
+.logo-img {
+  height: clamp(32px, 4vw, 45px);
+  width: auto;
+  display: block;
+}
+
+/* Footer Logo */
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 1.5rem;
+  filter: invert(1) brightness(2);
+}
+
 .site-logo h1 {
   color: #000;
   font-family: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
