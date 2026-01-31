@@ -20,17 +20,15 @@
 
   <!-- Mobile Redirect -->
   <script>
-    if (window.innerWidth <= 900) {
-      window.location.href = "work-mobile";
-    }
-    window.addEventListener('resize', () => {
+    function checkRedirect() {
       if (window.innerWidth <= 900) {
-        window.location.href = "work-mobile";
+        window.location.replace('work-mobile');
       }
-    });
-    window.location.href = "work-mobile.html";
-      }
-    });
+    }
+    // Run immediately
+    checkRedirect();
+    // Run on resize
+    window.addEventListener('resize', checkRedirect);
   </script>
 
   <style>
