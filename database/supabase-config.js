@@ -5,8 +5,8 @@ class SupabaseConfig {
         // Replace these with your actual Supabase project credentials
         // Get them from: https://supabase.com/dashboard/project/YOUR_PROJECT/settings/api
 
-        this.supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
-        this.supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+        this.supabaseUrl = 'https://fiuiywerforvkhjbetpm.supabase.co';
+        this.supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpdWl5d2VyZm9ydmtoamJldHBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NjU1ODYsImV4cCI6MjA4NTM0MTU4Nn0.L4l0qCXLBwG0aE74dfHcENVdbLvhE0oRL3r29IiZpn0';
 
         // ✅ CLI Access Token (already configured)
         this.accessToken = 'YOUR_SUPABASE_ACCESS_TOKEN';
