@@ -470,7 +470,7 @@
    ========================================= */
 
 .testimonials-section {
-    padding: clamp(6rem, 10vw, 8rem) 0;
+    padding: clamp(10rem, 15vw, 15rem) 0;
     background-color: #f8f8f8;
     position: relative;
 }
@@ -531,7 +531,8 @@
     line-height: 1;
     letter-spacing: -0.03em;
     margin: 0;
-    color: #000000; /* Changed to black */
+    color: #000000;
+    /* Changed to black */
 }
 
 /* Testimonials Grid */
@@ -586,7 +587,7 @@
 }
 
 .testimonial-text {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     line-height: 1.6;
     color: var(--text-main);
     margin-bottom: 2rem;
@@ -651,19 +652,30 @@
     font-weight: 500;
     margin: 0 0 0.25rem 0;
     letter-spacing: -0.01em;
+    color: #000000 !important;
 }
 
 .author-info span {
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: #000000 !important;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+
+.testimonial-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: #000000;
 }
 
 .testimonial-rating {
     color: #ffd700;
     font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Client Logos */
@@ -692,14 +704,37 @@
     animation-play-state: paused;
 }
 
-.client-logo:nth-child(1) { animation-delay: 1.2s; }
-.client-logo:nth-child(2) { animation-delay: 1.3s; }
-.client-logo:nth-child(3) { animation-delay: 1.4s; }
-.client-logo:nth-child(4) { animation-delay: 1.5s; }
-.client-logo:nth-child(5) { animation-delay: 1.6s; }
-.client-logo:nth-child(6) { animation-delay: 1.7s; }
-.client-logo:nth-child(7) { animation-delay: 1.8s; }
-.client-logo:nth-child(8) { animation-delay: 1.9s; }
+.client-logo:nth-child(1) {
+    animation-delay: 1.2s;
+}
+
+.client-logo:nth-child(2) {
+    animation-delay: 1.3s;
+}
+
+.client-logo:nth-child(3) {
+    animation-delay: 1.4s;
+}
+
+.client-logo:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.client-logo:nth-child(5) {
+    animation-delay: 1.6s;
+}
+
+.client-logo:nth-child(6) {
+    animation-delay: 1.7s;
+}
+
+.client-logo:nth-child(7) {
+    animation-delay: 1.8s;
+}
+
+.client-logo:nth-child(8) {
+    animation-delay: 1.9s;
+}
 
 .client-logo:hover {
     filter: grayscale(0%) opacity(1);
@@ -716,6 +751,7 @@
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }

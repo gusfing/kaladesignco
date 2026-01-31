@@ -90,8 +90,8 @@ if supabase start; then
     echo "  - Studio URL: http://localhost:54323"
     echo "  - Inbucket URL: http://localhost:54324"
     echo "  - JWT secret: super-secret-jwt-token-with-at-least-32-characters-long"
-    echo "  - anon key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
-    echo "  - service_role key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU"
+    echo "  - anon key: [REDACTED]"
+    echo "  - service_role key: [REDACTED]"
 else
     print_error "Failed to start local Supabase environment"
     exit 1

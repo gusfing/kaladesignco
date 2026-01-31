@@ -600,21 +600,8 @@ class DatabaseService {
 
     // User Authentication (for admin panel)
     async signIn(email, password) {
-        if (!this.isInitialized || this.fallbackToLocalStorage) {
-            // Fallback authentication
-            const validUsers = [
-                { email: 'admin@kaladesignco.com', password: 'kala2024' },
-                { email: 'demo@kaladesignco.com', password: 'demo123' }
-            ];
-
-            const user = validUsers.find(u => u.email === email && u.password === password);
-            if (user) {
-                localStorage.setItem('kala_admin_logged_in', 'true');
-                localStorage.setItem('kala_admin_login_time', Date.now().toString());
-                return { user: { email: user.email }, error: null };
-            } else {
-                return { user: null, error: { message: 'Invalid credentials' } };
-            }
+        if (!this.isInitialized) {
+            return { user: null, error: { message: 'Database not initialized' } };
         }
 
         try {

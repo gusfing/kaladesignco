@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,6 +142,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-header">
@@ -154,8 +156,8 @@
 
         <form id="loginForm">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Email</label>
+                <input type="email" id="username" name="username" required placeholder="admin@kaladesignco.com">
             </div>
 
             <div class="form-group">
@@ -168,23 +170,23 @@
             </button>
         </form>
 
-        <div class="demo-credentials">
-            <h4>Demo Credentials</h4>
-            <p><strong>Username:</strong> admin</p>
-            <p><strong>Password:</strong> kala2024</p>
-        </div>
-
         <div class="back-to-site">
             <a href="../index.html">← Back to Website</a>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../database/supabase-config.js"></script>
     <script>
         class AdminLogin {
             constructor() {
                 this.form = document.getElementById('loginForm');
                 this.errorMessage = document.getElementById('errorMessage');
                 this.loginBtn = document.getElementById('loginBtn');
+
+                // Initialize Supabase
+                this.supabase = supabase.createClient(supabaseConfig.supabaseUrl, supabaseConfig.supabaseKey);
+
                 this.init();
             }
 
@@ -194,14 +196,19 @@
                     this.handleLogin();
                 });
 
-                // Check if already logged in
-                if (this.isLoggedIn()) {
+                // Check if already logged in via Supabase
+                this.checkSession();
+            }
+
+            async checkSession() {
+                const { data: { session } } = await this.supabase.auth.getSession();
+                if (session) {
                     window.location.href = 'index.html';
                 }
             }
 
-            handleLogin() {
-                const username = document.getElementById('username').value;
+            async handleLogin() {
+                const email = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
 
                 // Show loading state
@@ -209,64 +216,27 @@
                 this.loginBtn.disabled = true;
                 this.hideError();
 
-                // Simulate API call delay
-                setTimeout(() => {
-                    if (this.validateCredentials(username, password)) {
-                        this.setLoggedIn();
+                try {
+                    const { data, error } = await this.supabase.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+                    if (error) throw error;
+
+                    if (data.user) {
+                        // Success
                         window.location.href = 'index.html';
-                    } else {
-                        this.showError();
-                        this.loginBtn.textContent = 'Sign In';
-                        this.loginBtn.disabled = false;
                     }
-                }, 1000);
-            }
-
-            validateCredentials(username, password) {
-                // In a real application, this would be handled server-side
-                const validCredentials = [
-                    { username: 'admin', password: 'kala2024' },
-                    { username: 'kala', password: 'design2024' },
-                    { username: 'demo', password: 'demo123' }
-                ];
-
-                return validCredentials.some(cred => 
-                    cred.username === username && cred.password === password
-                );
-            }
-
-            setLoggedIn() {
-                localStorage.setItem('kala_admin_logged_in', 'true');
-                localStorage.setItem('kala_admin_login_time', Date.now().toString());
-            }
-
-            isLoggedIn() {
-                const loggedIn = localStorage.getItem('kala_admin_logged_in');
-                const loginTime = localStorage.getItem('kala_admin_login_time');
-                
-                if (!loggedIn || !loginTime) {
-                    return false;
+                } catch (error) {
+                    this.showError(error.message || 'Invalid login details');
+                    this.loginBtn.textContent = 'Sign In';
+                    this.loginBtn.disabled = false;
                 }
-
-                // Check if login is still valid (24 hours)
-                const twentyFourHours = 24 * 60 * 60 * 1000;
-                const now = Date.now();
-                const loginTimestamp = parseInt(loginTime);
-
-                if (now - loginTimestamp > twentyFourHours) {
-                    this.logout();
-                    return false;
-                }
-
-                return true;
             }
 
-            logout() {
-                localStorage.removeItem('kala_admin_logged_in');
-                localStorage.removeItem('kala_admin_login_time');
-            }
-
-            showError() {
+            showError(msg) {
+                this.errorMessage.textContent = msg || 'Invalid username or password. Please try again.';
                 this.errorMessage.style.display = 'block';
             }
 
@@ -279,4 +249,5 @@
         new AdminLogin();
     </script>
 </body>
+
 </html>

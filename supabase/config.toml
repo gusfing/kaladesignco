@@ -16,7 +16,7 @@ extra_search_path = ["public", "extensions"]
 max_rows = 1000
 
 [db]
-enabled = true
+
 # Port to use for the local database URL.
 port = 54322
 # Port used by db diff command to initialize the shadow database.
@@ -104,13 +104,13 @@ auth_token = "env(SUPABASE_AUTH_TWILIO_AUTH_TOKEN)"
 # 4152127777 = "123456"
 
 # Configure SMTP server for sending emails
-[auth.email.smtp]
-host = "localhost"
-port = 587
-user = ""
-pass = ""
-admin_email = ""
-sender_name = ""
+# [auth.email.smtp]
+# host = "localhost"
+# port = 587
+# user = ""
+# pass = ""
+# admin_email = ""
+# sender_name = ""
 
 # Uncomment to customize auth template
 # [auth.email.template.invite]

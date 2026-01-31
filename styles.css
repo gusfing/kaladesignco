@@ -442,7 +442,7 @@ section {
   color: #fff;
   overflow: hidden;
   padding: 0;
-  height: 100vh;
+  height: 200vh;
   /* Full viewport height for pinning */
   display: flex;
   align-items: center;
