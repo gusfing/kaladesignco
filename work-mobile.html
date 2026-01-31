@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work - Kala Design Co</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Specific Newspaper Styles (Ported from About Page) */
+        :root {
+            --paper-bg: #f4f1ea;
+            --ink: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            color: var(--ink);
+        }
+
+        /* Hide standard elements */
+        .site-nav,
+        .site-footer,
+        .mobile-header,
+        .mobile-nav-toggle {
+            display: none !important;
+        }
+
+        .paper-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 3rem 4rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
+            background: #fffdf7;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform-origin: top center;
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+        }
+
+        /* Masthead */
+        .masthead {
+            text-align: center;
+            border-bottom: 4px double var(--ink);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .top-folks {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-align: right;
+            display: flex;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 0.5rem;
+            z-index: 100;
+        }
+
+        .top-folks a {
+            text-decoration: none;
+            color: var(--ink);
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .top-folks a.current-page {
+            background: var(--ink);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .masthead-meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid var(--ink);
+            border-bottom: 1px solid var(--ink);
+            padding: 0.5rem 0;
+            margin-top: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .masthead h1 {
+            font-family: "Playfair Display", Times, serif;
+            font-size: clamp(4rem, 14vw, 10rem);
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin: 2.5rem 0 1.5rem 0;
+            letter-spacing: -0.03em;
+        }
+
+        /* Projects Grid (Newspaper Style) */
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            border-top: 1px solid var(--ink);
+            padding-top: 2rem;
+        }
+
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: var(--ink);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:last-child {
+            border-bottom: none;
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.5s;
+            margin-bottom: 1rem;
+            border: 1px solid var(--ink);
+            padding: 4px;
+            background: #fff;
+        }
+
+        .project-card:hover .project-image {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .project-meta-top {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .project-title {
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .project-desc {
+            font-family: "Georgia", serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-family: var(--font-mono);
+            color: #666;
+        }
+
+        /* Footer / Bottom Info */
+        .footer-info {
+            margin-top: 4rem;
+            border-top: 4px double var(--ink);
+            padding-top: 2rem;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .paper-container {
+                padding: 1.5rem;
+                margin: 0;
+                border: none;
+                box-shadow: none;
+            }
+
+            .top-folks {
+                position: static;
+                justify-content: center;
+                margin-bottom: 1rem;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .top-folks a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .masthead h1 {
+                font-size: clamp(3rem, 12vw, 6rem);
+            }
+        }
+    </style>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="paper-container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="top-folks">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="work.html" class="current-page">Work</a>
+                <a href="journal.html">Journal</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="masthead-meta">
+                <span>Vol. 01</span>
+                <span>Selected Works</span>
+            </div>
+
+            <h1>Portfolio</h1>
+
+            <div class="masthead-meta"
+                style="margin-bottom: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);">
+                <span>Residential</span>
+                <span>Commercial</span>
+                <span>Renovation</span>
+                <span>Concept</span>
+            </div>
+        </header>
+
+        <!-- Project List -->
+        <div id="project-list" class="news-grid">
+            <div class="loading">Fetching latest archives...</div>
+        </div>
+
+        <!-- Footer Info -->
+        <footer class="footer-info">
+            <p>Kala Design Co. &copy; 2024</p>
+            <p>Rajasthan, India</p>
+        </footer>
+
+    </div>
+
+    <!-- Animation Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tl = gsap.timeline();
+            tl.to(".paper-container", {
+                duration: 1.5,
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                ease: "power3.out"
+            })
+                .from(".masthead h1, .masthead-meta, .top-folks", {
+                    duration: 1,
+                    y: 20,
+                    opacity: 0,
+                    stagger: 0.1,
+                    ease: "power2.out"
+                }, "-=1");
+        });
+    </script>
+
+    <!-- Database Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="database/supabase-config.js"></script>
+    <script>
+        // Fetch Projects
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('project-list');
+            try {
+                // Initialize Supabase
+                const supabaseConfig = new SupabaseConfig();
+                await supabaseConfig.init();
+                const _supabase = supabaseConfig.getClient();
+
+                if (!_supabase) {
+                    throw new Error("Supabase client not initialized");
+                }
+
+                // Fetch works
+                const { data: works, error } = await _supabase
+                    .from('works')
+                    .select('*')
+                    .order('year', { ascending: false });
+
+                if (error) throw error;
+
+                if (!works || works.length === 0) {
+                    container.innerHTML = '<div class="loading">No records found in archives.</div>';
+                    return;
+                }
+
+                // Render List
+                container.innerHTML = works.map(work => `
+                    <a href="work-detail.html?id=${work.id}" class="project-card">
+                        <div class="project-meta-top">
+                            <span>${work.category}</span>
+                            <span>${work.year}</span>
+                        </div>
+                        <img src="${work.image_url}" alt="${work.title}" class="project-image" loading="lazy">
+                        <h2 class="project-title">${work.title}</h2>
+                        <div class="project-desc">${work.description}</div>
+                    </a>
+                `).join('');
+
+                // Animate items
+                gsap.from(".project-card", {
+                    duration: 0.8,
+                    y: 30,
+                    opacity: 0,
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: ".news-grid",
+                        start: "top 80%"
+                    }
+                });
+
+            } catch (err) {
+                console.error('Error loading projects:', err);
+                container.innerHTML = '<div class="loading">Error retrieving archives.</div>';
+            }
+        });
+    </script>
+</body>
+
+</html>
