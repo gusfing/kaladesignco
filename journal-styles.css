@@ -116,7 +116,7 @@
 }
 
 .article-date {
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -340,11 +340,11 @@
   .journal-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  
+
   .featured-article {
     grid-template-columns: 1fr;
   }
-  
+
   .featured-article .article-image {
     height: 250px;
   }
@@ -354,11 +354,11 @@
   .journal-mobile-nav-toggle {
     display: block;
   }
-  
+
   .journal-header .nav {
     display: none;
   }
-  
+
   .journal-header {
     flex-direction: column;
     align-items: flex-start;
@@ -386,24 +386,24 @@
   .journal-header {
     padding: 1em;
   }
-  
+
   .journal-hero {
     padding: 6em 1em 2em 1em;
   }
-  
+
   .journal-grid {
     padding: 1.5em 1em;
     gap: 2em;
   }
-  
+
   .article-content {
     padding: 1.5em;
   }
-  
+
   .featured-article .article-content {
     padding: 2em 1.5em;
   }
-  
+
   .newsletter-section {
     padding: 2em 1em;
   }
@@ -413,11 +413,11 @@
   .journal-hero .hero-text h2 {
     font-size: 2rem;
   }
-  
+
   .article-content h3 {
     font-size: 1.2rem;
   }
-  
+
   .newsletter-content h2 {
     font-size: 1.8rem;
   }

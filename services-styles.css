@@ -113,7 +113,7 @@
   justify-content: center;
   font-size: 1.2rem;
   font-weight: 600;
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 .service-content h3 {
@@ -205,7 +205,7 @@
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 600;
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   margin: 0 auto 1.5em auto;
 }
 
@@ -242,7 +242,7 @@
 }
 
 .services-footer .footer-label {
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;

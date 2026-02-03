@@ -109,7 +109,7 @@
   font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   font-weight: 500;
   color: #333;
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -330,11 +330,11 @@
   .contact-mobile-nav-toggle {
     display: block;
   }
-  
+
   .contact-header .nav {
     display: none;
   }
-  
+
   .contact-header {
     flex-direction: column;
     align-items: flex-start;
@@ -357,24 +357,24 @@
   .contact-header {
     padding: 1em;
   }
-  
+
   .contact-hero {
     padding: 6em 1em 2em 1em;
   }
-  
+
   .contact-content {
     padding: 1.5em 1em;
     gap: 1.5em;
   }
-  
+
   .contact-form-section {
     padding: 1.5em;
   }
-  
+
   .contact-info-card {
     padding: 1.5em;
   }
-  
+
   .map-section {
     height: 300px;
     margin-top: 2em;
@@ -385,11 +385,11 @@
   .contact-hero .hero-text h2 {
     font-size: 2rem;
   }
-  
+
   .contact-form-section h3 {
     font-size: 1.3rem;
   }
-  
+
   .contact-info-card h4 {
     font-size: 1.1rem;
   }

@@ -7,7 +7,7 @@
     min-height: 100vh;
     background: #000;
     color: #fff;
-    font-family: "PP Neue Montreal", sans-serif;
+    font-family: var(--font-main);
     overflow: hidden;
     /* Ensure contained elements don't spill out */
     z-index: 10;
@@ -62,7 +62,7 @@
 
 .savoirfaire-footer .header h1 {
     text-transform: uppercase;
-    font-family: "PP Editorial Old", serif;
+    font-family: var(--font-main);
     /* Ensure serif fallback or font load */
     font-size: 14vw;
     font-weight: 300;

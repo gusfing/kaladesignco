@@ -103,7 +103,7 @@
 }
 
 .project-category {
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -138,7 +138,7 @@
 }
 
 .footer-label {
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -161,7 +161,7 @@
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 3em 2em;
   }
-  
+
   .project-image {
     height: clamp(280px, 45vw, 450px);
   }
@@ -211,54 +211,54 @@
   .work-header {
     padding: 1em;
   }
-  
+
   .work-header .site-logo {
     gap: 0.5em;
   }
-  
+
   .work-header .site-logo h1 {
     font-size: clamp(1.5rem, 6vw, 2rem);
   }
-  
+
   .work-header .nav {
     gap: 0.5em;
     flex-wrap: wrap;
   }
-  
+
   .work-header .nav .nav-item p {
     font-size: 14px;
   }
-  
+
   .work-hero {
     padding: 6em 1em 2em 1em;
   }
-  
+
   .hero-text h2 {
     font-size: clamp(1.8rem, 12vw, 3rem);
     margin-bottom: 0.8em;
   }
-  
+
   .hero-text p {
     font-size: clamp(0.9rem, 3.5vw, 1.1rem);
   }
-  
+
   .projects-grid {
     padding: 2em 1em;
     gap: 2.5em;
   }
-  
+
   .project-image {
     height: clamp(200px, 70vw, 300px);
   }
-  
+
   .project-info h3 {
     font-size: clamp(1.3rem, 4vw, 1.6rem);
   }
-  
+
   .project-description {
     font-size: clamp(0.85rem, 2.5vw, 0.95rem);
   }
-  
+
   .work-footer {
     padding: 2em 1em;
     margin-top: 3em;
@@ -270,40 +270,40 @@
   .work-header {
     padding: 0.8em;
   }
-  
+
   .work-header .site-logo h1 {
     font-size: 1.3rem;
   }
-  
+
   .work-header .nav .nav-item p {
     font-size: 12px;
   }
-  
+
   .work-hero {
     padding: 5em 0.8em 1.5em 0.8em;
   }
-  
+
   .hero-text h2 {
     font-size: 1.6rem;
   }
-  
+
   .hero-text p {
     font-size: 0.85rem;
   }
-  
+
   .projects-grid {
     padding: 1.5em 0.8em;
     gap: 2em;
   }
-  
+
   .project-image {
     height: 180px;
   }
-  
+
   .project-info h3 {
     font-size: 1.2rem;
   }
-  
+
   .project-description {
     font-size: 0.8rem;
   }
@@ -315,29 +315,30 @@
     position: relative;
     padding: 1em;
   }
-  
+
   .work-hero {
     padding: 2em 1em;
   }
-  
+
   .hero-text h2 {
     font-size: clamp(1.5rem, 8vw, 2.5rem);
     margin-bottom: 0.5em;
   }
-  
+
   .hero-text p {
     font-size: clamp(0.9rem, 2vw, 1rem);
   }
-  
+
   .projects-grid {
     padding: 1em;
     gap: 2em;
   }
-  
+
   .project-image {
     height: 200px;
   }
 }
+
 /* Mobile Navigation for Work Page */
 .work-mobile-nav-toggle {
   display: none;
@@ -419,7 +420,7 @@
   .work-mobile-nav-toggle {
     display: block;
   }
-  
+
   .work-header .nav {
     display: none;
   }

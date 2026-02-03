@@ -114,7 +114,7 @@
 }
 
 .member-role {
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -248,7 +248,7 @@
 }
 
 .team-footer .footer-label {
-  font-family: "Apercu Mono Pro", "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -370,7 +370,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3em 2em;
   }
-  
+
   .values-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
@@ -380,11 +380,11 @@
   .team-mobile-nav-toggle {
     display: block;
   }
-  
+
   .team-header .nav {
     display: none;
   }
-  
+
   .team-header {
     flex-direction: column;
     align-items: flex-start;
@@ -413,24 +413,24 @@
   .team-header {
     padding: 1em;
   }
-  
+
   .team-hero {
     padding: 6em 1em 2em 1em;
   }
-  
+
   .team-grid {
     padding: 1.5em 1em;
     gap: 2em;
   }
-  
+
   .member-info {
     padding: 1.5em;
   }
-  
+
   .values-section {
     padding: 2em 1em;
   }
-  
+
   .team-footer {
     padding: 2em 1em;
   }
@@ -440,11 +440,11 @@
   .team-hero .hero-text h2 {
     font-size: 2rem;
   }
-  
+
   .member-info h3 {
     font-size: 1.3rem;
   }
-  
+
   .values-header h2 {
     font-size: 1.8rem;
   }
