@@ -46,34 +46,36 @@
     </div>
 
     <div class="hero-content">
-      <div class="site-logo">
-        <a href="./">
-          <img src="./assets/kdc-new-logo.png" alt="Kala Design Co" class="logo-img">
-        </a>
+      <div class="hero-header">
+        <div class="site-logo">
+          <a href="./">
+            <img src="./assets/kdc-new-logo.png" alt="Kala Design Co" class="logo-img">
+          </a>
+        </div>
+
+        <div class="nav">
+          <div class="nav-item">
+            <p><a href="about">About</a></p>
+          </div>
+          <div class="nav-item">
+            <p><a href="services">Services</a></p>
+          </div>
+          <div class="nav-item">
+            <p><a href="team">Team</a></p>
+          </div>
+          <div class="nav-item">
+            <p><a href="work">Work</a></p>
+          </div>
+          <div class="nav-item">
+            <p><a href="journal">Journal</a></p>
+          </div>
+          <div class="nav-item">
+            <p><a href="contact">Contact</a></p>
+          </div>
+        </div>
       </div>
 
-      <div class="nav">
-        <div class="nav-item">
-          <p><a href="about">About</a></p>
-        </div>
-        <div class="nav-item">
-          <p><a href="services">Services</a></p>
-        </div>
-        <div class="nav-item">
-          <p><a href="team">Team</a></p>
-        </div>
-        <div class="nav-item">
-          <p><a href="work">Work</a></p>
-        </div>
-        <div class="nav-item">
-          <p><a href="journal">Journal</a></p>
-        </div>
-        <div class="nav-item">
-          <p><a href="contact">Contact</a></p>
-        </div>
-      </div>
-
-      <!-- Mobile Navigation -->
+      <!-- Mobile Navigation Toggle -->
       <button class="mobile-nav-toggle" aria-label="Toggle navigation">
         <span></span>
         <span></span>
@@ -101,18 +103,20 @@
         </div>
       </div>
 
-      <div class="team-img">
-        <img src="./assets/projects/media-facade-1.jpg" alt="Media Facade Project" />
-      </div>
-
-      <div class="site-info">
-        <div class="row">
-          <div class="col">
+      <div class="hero-main-layout">
+        <div class="hero-col hero-left">
+          <div class="featured-label">
             <div class="line">
               <p>Featured Works</p>
             </div>
+            <div class="arrow-down">↓</div>
           </div>
-          <div class="col">
+          <!-- Images container is placed outside hero-content but positioned absolute. 
+               We'll target it with CSS to align with this column. -->
+        </div>
+
+        <div class="hero-col hero-center">
+          <div class="site-info">
             <h2>
               Kala Design Co is a contemporary interior design agency creating
               beautiful spaces with timeless elegance and innovative aesthetics.
@@ -120,35 +124,36 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col"></div>
-          <div class="col">
-            <div class="address">
-              <div class="line">
-                <p>Kala Design Co Studio</p>
-              </div>
-              <div class="line">
-                <p>Riverstone Building</p>
-              </div>
-              <div class="line">
-                <p>- 28 Orchard Lane</p>
-              </div>
-              <div class="line">
-                <p>N1 4DX</p>
-              </div>
-            </div>
+        <div class="hero-col hero-right">
+          <div class="team-img">
+            <img src="./assets/projects/media-facade-1.jpg" alt="Media Facade Project" />
+          </div>
+        </div>
+      </div>
 
-            <div class="socials">
-              <div class="line">
-                <p>SayHi@KalaDesignCo.com</p>
-              </div>
-              <br />
-              <div class="line">
-                <p>Instagram</p>
-              </div>
-              <div class="line">
-                <p>LinkedIn</p>
-              </div>
+      <div class="hero-footer-info">
+        <div class="footer-col address">
+          <div class="line">
+            <p>Kala Design Co Studio</p>
+          </div>
+          <div class="line">
+            <p>Riverstone Building</p>
+          </div>
+          <div class="line">
+            <p>- 28 Orchard Lane</p>
+          </div>
+          <div class="line">
+            <p>N1 4DX</p>
+          </div>
+        </div>
+
+        <div class="footer-col contact">
+          <div class="line">
+            <p>SayHi@KalaDesignCo.com</p>
+          </div>
+          <div class="social-links">
+            <div class="line">
+              <p><a href="#">Instagram</a> / <a href="#">LinkedIn</a></p>
             </div>
           </div>
         </div>

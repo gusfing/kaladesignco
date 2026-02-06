@@ -58,15 +58,15 @@
 
 .images.stacked-container {
   position: absolute;
-  left: 2em;
-  bottom: 2em;
+  left: 3rem;
+  top: 55%;
   width: auto;
   height: auto;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: flex-start;
   gap: 1em;
-  transform: none;
+  transform: translateY(-50%);
   will-change: transform;
 }
 
@@ -86,19 +86,23 @@
   width: 100%;
   height: 100%;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
-.site-logo {
-  position: absolute;
-  top: 2em;
-  left: 2em;
+.hero-header {
   display: flex;
-  z-index: 100;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .site-logo {
   display: flex;
   gap: 1em;
+  z-index: 100;
 }
 
 .site-logo a {
@@ -107,56 +111,26 @@
   text-decoration: none;
 }
 
-/* Logo Image Styles */
 .logo-img {
   height: clamp(50px, 6vw, 80px);
   width: auto;
   display: block;
 }
 
-/* Footer Logo */
-.footer-logo {
-  height: 50px;
-  width: auto;
-  margin-bottom: 1.5rem;
-  filter: invert(1) brightness(2);
-}
-
-.site-logo h1 {
-  color: #000;
-  font-family: var(--font-main);
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-
-.site-logo h1 sup {
-  position: absolute;
-  top: -0.125em;
-  font-size: clamp(1rem, 2vw, 2rem);
-}
-
 .nav {
-  position: absolute;
-  right: 0;
-  width: auto;
-  padding: 2em;
   display: flex;
-  justify-content: flex-end;
-  gap: clamp(0.5em, 2vw, 1em);
+  gap: 4rem;
   z-index: 100;
-  flex-wrap: wrap;
 }
 
 .nav .nav-item {
   position: relative;
-  z-index: 100;
 }
 
 .nav .nav-item p {
-  position: relative;
-  font-size: clamp(14px, 2vw, 16px);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: clamp(10px, 1.5vw, 12px);
   font-weight: 500;
 }
 
@@ -165,7 +139,6 @@
   text-decoration: none;
   transition: opacity 0.3s ease;
   position: relative;
-  z-index: 100;
   cursor: pointer;
 }
 
@@ -173,67 +146,104 @@
   opacity: 0.6;
 }
 
+.hero-main-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 200px 1.5fr 2fr;
+  gap: 4rem;
+  align-items: center;
+  margin: 4rem 0;
+}
+
+.hero-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.featured-label p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.arrow-down {
+  font-size: 24px;
+}
+
+.site-info h2 {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1.1;
+  max-width: 90%;
+}
+
+.hero-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 .team-img {
-  position: absolute;
-  right: 2em;
-  bottom: 2em;
-  width: 40%;
-  height: 50%;
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/10;
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
 .team-img img {
-  /* filter removed to keep color images */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.site-info {
-  position: absolute;
-  bottom: 2em;
-  left: 2em;
-  width: calc(100% - 4em);
-  max-width: 50%;
-  height: auto;
-  min-height: 50%;
+.hero-footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.footer-col {
+  flex: 1;
+}
+
+.footer-col.contact {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-.site-info .row {
-  display: flex;
-  gap: 2em;
-}
-
-.site-info .row .col {
-  flex: 1;
-}
-
-.site-info h2 {
-  font-size: clamp(18px, 3vw, 25px);
-  font-weight: 500;
-  line-height: 1.25;
-}
-
-.site-info p {
-  text-transform: uppercase;
-  font-family: var(--font-mono);
-  font-size: clamp(10px, 1.5vw, 11px);
-  font-weight: 500;
-  color: #000;
-}
-
-.site-info .row:nth-child(2) .col:nth-child(2) {
-  display: flex;
-}
-
-.address,
-.socials {
-  flex: 1;
+  align-items: flex-end;
 }
 
 .address p,
-.socials p {
-  line-height: 1.25;
+.footer-col p {
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 1.2vw, 11px);
+  text-transform: uppercase;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-links p a {
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.social-links p a:hover {
+  opacity: 0.6;
 }
 
 .word,
