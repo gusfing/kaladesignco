@@ -550,7 +550,11 @@
 
 /* Hide desktop-only footer elements */
 .site-footer .footer-big-text {
-    display: none;
+    display: block;
+    font-size: 15vw;
+    opacity: 0.05;
+    white-space: nowrap;
+    margin-top: 2rem;
 }
 
 /* Menu Loading Animation */

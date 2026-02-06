@@ -564,15 +564,17 @@ section {
 }
 
 .footer-big-text {
-  font-size: 18vw;
+  font-size: 16vw;
   line-height: 0.8;
-  ;
+  white-space: nowrap;
+  width: 100%;
   text-align: center;
   color: var(--white);
   opacity: 0.1;
   user-select: none;
   pointer-events: none;
   overflow: hidden;
+  text-transform: uppercase;
 }
 
 /* Mobile & Responsive Adjustments */
