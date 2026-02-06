@@ -679,8 +679,16 @@
 /* Client Logos */
 .client-logos {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
     overflow: hidden;
+}
+
+.client-logos .section-label {
+    font-size: 1.1rem !important;
+    letter-spacing: 0.2em !important;
+    margin-bottom: 3rem !important;
+    opacity: 0.9 !important;
 }
 
 .logos-track {
@@ -692,9 +700,9 @@
 }
 
 .client-logo {
-    height: 40px;
+    height: 70px;
     width: auto;
-    max-width: 120px;
+    max-width: 200px;
     object-fit: contain;
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -811,8 +819,8 @@
     }
 
     .client-logo {
-        height: 32px;
-        max-width: 100px;
+        height: 50px;
+        max-width: 150px;
     }
 }
 
