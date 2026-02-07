@@ -226,7 +226,9 @@
                     if (error) throw error;
 
                     if (data.user) {
-                        // Success
+                        // Success - set local storage for index.html checkAuth
+                        localStorage.setItem('kala_admin_logged_in', 'true');
+                        localStorage.setItem('kala_admin_login_time', Date.now().toString());
                         window.location.href = 'index.html';
                     }
                 } catch (error) {

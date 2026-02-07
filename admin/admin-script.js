@@ -23,6 +23,7 @@ class AdminPanel {
         this.setupSettings();
         this.setupSEO();
         this.setupAnalytics();
+        this.setupUserManagement();
         await this.loadDashboard();
 
         // Load all data initially
@@ -124,6 +125,8 @@ class AdminPanel {
             this.loadWorkPortfolio();
         } else if (sectionId === 'analytics') {
             this.loadAnalytics();
+        } else if (sectionId === 'user-management') {
+            this.loadUserManagement();
         }
     }
 
@@ -405,6 +408,51 @@ class AdminPanel {
 
     setupAnalytics() {
         console.log('Analytics setup');
+    }
+
+    setupUserManagement() {
+        const inviteBtn = document.getElementById('manual-invite-btn');
+        if (inviteBtn) {
+            inviteBtn.addEventListener('click', () => {
+                alert('Please refer to ADMIN_INVITE_GUIDE.md in the brain/ directory for the SQL script to add new admins via Supabase.');
+            });
+        }
+    }
+
+    async loadUserManagement() {
+        const tableBody = document.getElementById('user-table-body');
+        if (!tableBody) return;
+
+        try {
+            tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Loading users...</td></tr>';
+
+            // Fetch users from admin_users table
+            const { data: users, error } = await this.db.supabase
+                .from('admin_users')
+                .select('*')
+                .order('created_at', { ascending: true });
+
+            if (error) throw error;
+
+            if (!users || users.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No admin users found.</td></tr>';
+                return;
+            }
+
+            tableBody.innerHTML = users.map(user => `
+                <tr>
+                    <td style="font-weight: 500;">${user.full_name || 'N/A'}</td>
+                    <td>${user.email}</td>
+                    <td><span class="badge badge-info">${user.role || 'admin'}</span></td>
+                    <td><span class="badge badge-${user.is_active ? 'success' : 'danger'}">${user.is_active ? 'Active' : 'Inactive'}</span></td>
+                    <td>${user.last_login ? new Date(user.last_login).toLocaleString() : 'Never'}</td>
+                </tr>
+            `).join('');
+
+        } catch (error) {
+            console.error('Error loading user management:', error);
+            tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: red;">Error loading users. Check console for details.</td></tr>';
+        }
     }
 
     loadContactTable() {

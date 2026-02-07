@@ -38,6 +38,9 @@
                 <li><a href="#analytics" class="nav-link" data-section="analytics">
                         <i class="fas fa-chart-line"></i> Analytics
                     </a></li>
+                <li><a href="#user-management" class="nav-link" data-section="user-management">
+                        <i class="fas fa-users-cog"></i> User Management
+                    </a></li>
             </ul>
 
             <div class="admin-footer">
@@ -381,6 +384,42 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- User Management Section -->
+            <section id="user-management" class="admin-section">
+                <div class="user-management-header">
+                    <h3>Admin User Management</h3>
+                    <div class="user-actions">
+                        <button class="btn-primary" id="manual-invite-btn">Manual Invite Guide</button>
+                    </div>
+                </div>
+
+                <div class="user-table-container">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Last Login</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- User list will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box"
+                    style="margin-top: 2rem; padding: 1.5rem; background: #fffbeb; border-radius: 8px; border: 1px solid #fef3c7;">
+                    <h4 style="color: #92400e; margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> Adding New
+                        Admins</h4>
+                    <p style="color: #92400e; font-size: 0.9rem;">To add a new administrator, you must use the SQL
+                        invitation method via the Supabase Dashboard. This ensures secure password creation and Auth
+                        setup.</p>
                 </div>
             </section>
         </main>

@@ -1,14 +1,11 @@
 {
     "cleanUrls": true,
     "trailingSlash": false,
-    "rewrites": [
+    "redirects": [
         {
-            "source": "/",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/index",
-            "destination": "/index.html"
+            "source": "/login",
+            "destination": "/admin/login",
+            "permanent": false
         }
     ],
     "headers": [
