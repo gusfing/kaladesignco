@@ -16,8 +16,7 @@
         },
         {
             "source": "/(.*)",
-            "destination": "/404.html",
-            "condition": "not-found"
+            "destination": "/404.html"
         }
     ],
     "headers": [
